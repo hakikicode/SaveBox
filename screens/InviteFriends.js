@@ -1,38 +1,28 @@
 import * as React from "react";
 import { Text, StyleSheet, View } from "react-native";
 import { Image } from "expo-image";
-import { Border, FontFamily, Color, FontSize } from "../GlobalStyles";
+import FrameComponent1 from "../components/FrameComponent1";
+import { FontSize, FontFamily, Color, Border, Padding } from "../GlobalStyles";
 
 const InviteFriends = () => {
   return (
     <View style={styles.inviteFriends}>
-      <Text style={[styles.description, styles.sendFlexBox]}>
+      <Text style={[styles.description, styles.descriptionFlexBox]}>
         Invite your friend and you can earn up to $100 for every 5 friends who
         transfer over $400
       </Text>
-      <Text style={[styles.pleaseEnterYour, styles.sendFlexBox]}>
+      <Text style={[styles.pleaseEnterYour, styles.descriptionFlexBox]}>
         Terms and Conditions
       </Text>
-      <View style={[styles.inviteFriendsChild, styles.rectangleLayout]} />
-      <View style={styles.rectangleParent}>
-        <View style={[styles.rectangle, styles.rectangleLayout]} />
-        <Text style={[styles.send, styles.sendFlexBox]}>
-          Invite friends now
-        </Text>
-        <Image
-          style={[styles.inviteFriendArrow, styles.vectorIconLayout]}
-          contentFit="cover"
-          source={require("../assets/invite-friend-arrow1.png")}
-        />
-      </View>
+      <View style={styles.inviteFriendsChild} />
+      <FrameComponent1 />
       <Text style={styles.mainHeadline}>Earn $100</Text>
       <Image
         style={styles.shareBtnIcon}
         contentFit="cover"
         source={require("../assets/share-btn.png")}
       />
-      <View style={[styles.backBtn, styles.backLayout]}>
-        <View style={[styles.backBtnChild, styles.backLayout]} />
+      <View style={styles.backBtn}>
         <Image
           style={styles.image15Icon}
           contentFit="cover"
@@ -47,7 +37,7 @@ const InviteFriends = () => {
       <Image
         style={[styles.vectorIcon1, styles.vectorIconLayout]}
         contentFit="cover"
-        source={require("../assets/vector11.png")}
+        source={require("../assets/vector111.png")}
       />
       <Image
         style={styles.illustrationIcon}
@@ -59,13 +49,9 @@ const InviteFriends = () => {
 };
 
 const styles = StyleSheet.create({
-  sendFlexBox: {
+  descriptionFlexBox: {
     textAlign: "center",
     letterSpacing: 0,
-    position: "absolute",
-  },
-  rectangleLayout: {
-    borderRadius: Border.br_5xs,
     position: "absolute",
   },
   vectorIconLayout: {
@@ -74,20 +60,14 @@ const styles = StyleSheet.create({
     position: "absolute",
     overflow: "hidden",
   },
-  backLayout: {
-    height: 47,
-    width: 47,
-    position: "absolute",
-  },
   description: {
     top: 524,
     left: 26,
+    fontSize: FontSize.size_lg,
     lineHeight: 26,
     fontFamily: FontFamily.interRegular,
     width: 378,
     color: Color.darkslateblue,
-    fontSize: FontSize.size_lg,
-    letterSpacing: 0,
   },
   pleaseEnterYour: {
     top: 638,
@@ -102,42 +82,10 @@ const styles = StyleSheet.create({
   inviteFriendsChild: {
     top: 801,
     left: 86,
+    borderRadius: Border.br_5xs,
     backgroundColor: Color.salmon_100,
     width: 234,
     height: 41,
-  },
-  rectangle: {
-    height: "100%",
-    top: "0%",
-    right: "0%",
-    bottom: "0%",
-    left: "0%",
-    backgroundColor: Color.royalblue_100,
-    width: "100%",
-    borderRadius: Border.br_5xs,
-  },
-  send: {
-    top: "35.62%",
-    left: "10.54%",
-    fontWeight: "500",
-    fontFamily: FontFamily.interMedium,
-    color: Color.white,
-    fontSize: FontSize.size_lg,
-    letterSpacing: 0,
-  },
-  inviteFriendArrow: {
-    height: "58.04%",
-    width: "13.25%",
-    top: "20.55%",
-    right: "3.92%",
-    bottom: "21.41%",
-    left: "82.83%",
-  },
-  rectangleParent: {
-    top: 757,
-    width: 332,
-    height: 73,
-    left: 41,
     position: "absolute",
   },
   mainHeadline: {
@@ -145,7 +93,7 @@ const styles = StyleSheet.create({
     left: 103,
     fontSize: FontSize.size_27xl,
     lineHeight: 59,
-    fontFamily: FontFamily.gilroyBold,
+    fontFamily: FontFamily.robotoRegular,
     textAlign: "left",
     color: Color.darkslateblue,
     position: "absolute",
@@ -157,9 +105,13 @@ const styles = StyleSheet.create({
     height: 177,
     position: "absolute",
   },
-  backBtnChild: {
-    top: 0,
-    left: 0,
+  image15Icon: {
+    width: 16,
+    height: 16,
+  },
+  backBtn: {
+    top: 58,
+    left: 41,
     borderRadius: Border.br_mini,
     shadowColor: "rgba(111, 136, 157, 0.25)",
     shadowOffset: {
@@ -169,20 +121,13 @@ const styles = StyleSheet.create({
     shadowRadius: 65,
     elevation: 65,
     shadowOpacity: 1,
-    backgroundColor: Color.white,
-    height: 47,
     width: 47,
-  },
-  image15Icon: {
-    top: 16,
-    left: 16,
-    width: 16,
-    height: 16,
+    height: 47,
+    padding: Padding.p_mini,
+    alignItems: "flex-end",
+    justifyContent: "flex-end",
     position: "absolute",
-  },
-  backBtn: {
-    top: 58,
-    left: 41,
+    backgroundColor: Color.white,
   },
   vectorIcon: {
     height: "14.58%",
@@ -209,9 +154,9 @@ const styles = StyleSheet.create({
   },
   inviteFriends: {
     flex: 1,
+    width: "100%",
     height: 896,
     overflow: "hidden",
-    width: "100%",
     backgroundColor: Color.white,
   },
 });

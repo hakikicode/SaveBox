@@ -1,166 +1,131 @@
 import * as React from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, Pressable, View } from "react-native";
 import { Image } from "expo-image";
-import { Color, FontFamily, FontSize } from "../GlobalStyles";
+import { useNavigation } from "@react-navigation/native";
+import ContainerFrame from "../components/ContainerFrame";
+import { Color, FontSize, FontFamily } from "../GlobalStyles";
 
 const Onboarding02 = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.onboarding02}>
-      <Text style={[styles.mainHeadline, styles.descriptionFlexBox]}>
-        See where your money is going
-      </Text>
       <Text
-        style={[styles.description, styles.descriptionFlexBox]}
+        style={[styles.description, styles.skip1FlexBox]}
       >{`Stay on top by effortlessly tracking your subscriptions & bills`}</Text>
-      <View style={styles.roundBtn}>
-        <Image
-          style={[styles.layerBlurIcon, styles.iconLayout]}
-          contentFit="cover"
-          source={require("../assets/layer-blur.png")}
-        />
-        <Image
-          style={[styles.ovalIcon, styles.iconLayout]}
-          contentFit="cover"
-          source={require("../assets/oval.png")}
-        />
-        <Text style={[styles.next, styles.nextTypo]}>NEXT</Text>
-      </View>
-      <Text style={[styles.text, styles.nextTypo]}>2/3</Text>
-      <Text style={[styles.skip, styles.nextTypo]}>SKIP</Text>
+      <Pressable
+        style={styles.skip}
+        onPress={() => navigation.navigate("Welcome")}
+      >
+        <Text style={[styles.skip1, styles.skip1FlexBox]}>SKIP</Text>
+      </Pressable>
       <Image
-        style={[styles.vectorIcon, styles.iconLayout]}
-        contentFit="cover"
-        source={require("../assets/vector8.png")}
-      />
-      <Image
-        style={[styles.vectorIcon1, styles.iconLayout]}
-        contentFit="cover"
-        source={require("../assets/vector14.png")}
-      />
-      <Image
-        style={styles.illustrationIcon}
+        style={[styles.illustrationIcon, styles.framePosition]}
         contentFit="cover"
         source={require("../assets/illustration8.png")}
+      />
+      <View style={[styles.frame, styles.framePosition]}>
+        <Text style={[styles.mainHeadline, styles.skip1FlexBox]}>
+          See where your money is going
+        </Text>
+        <Image
+          style={[styles.vectorIcon, styles.vectorIconLayout]}
+          contentFit="cover"
+          source={require("../assets/vector.png")}
+        />
+        <Image
+          style={[styles.vectorIcon1, styles.vectorIconLayout]}
+          contentFit="cover"
+          source={require("../assets/vector5.png")}
+        />
+      </View>
+      <ContainerFrame
+        fractionText="2/3"
+        propLeft={33}
+        onFramePress={() => navigation.navigate("Onboarding03")}
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  descriptionFlexBox: {
+  skip1FlexBox: {
     textAlign: "center",
     color: Color.darkslateblue,
+  },
+  framePosition: {
+    top: 179,
     position: "absolute",
   },
-  iconLayout: {
+  vectorIconLayout: {
     maxHeight: "100%",
     maxWidth: "100%",
     position: "absolute",
     overflow: "hidden",
   },
-  nextTypo: {
-    fontFamily: FontFamily.interMedium,
-    fontWeight: "500",
-    letterSpacing: 3,
-    fontSize: FontSize.size_sm,
-    textAlign: "center",
-    position: "absolute",
-  },
-  mainHeadline: {
-    top: 452,
-    left: 46,
-    fontSize: FontSize.size_25xl,
-    lineHeight: 49,
-    fontFamily: FontFamily.gilroyBold,
-    width: 323,
-  },
   description: {
     top: 602,
-    left: 43,
     fontSize: FontSize.size_lg,
     letterSpacing: 0,
     lineHeight: 25,
     fontFamily: FontFamily.interRegular,
     width: 328,
-  },
-  layerBlurIcon: {
-    height: "137.17%",
-    width: "177.66%",
-    top: "-18.58%",
-    right: "-36.17%",
-    bottom: "-18.58%",
-    left: "-41.49%",
-  },
-  ovalIcon: {
-    height: "83.19%",
-    top: "0%",
-    right: "0%",
-    bottom: "16.81%",
-    left: "0%",
-    width: "100%",
-    maxWidth: "100%",
-  },
-  next: {
-    top: 39,
-    left: 25,
-    color: Color.white,
-  },
-  roundBtn: {
-    height: "12.61%",
-    width: "22.71%",
-    top: "85.04%",
-    right: "8.21%",
-    bottom: "2.34%",
-    left: "69.08%",
+    left: 43,
     position: "absolute",
   },
-  text: {
-    top: 801,
-    left: 33,
-    color: Color.darkslateblue,
-    fontFamily: FontFamily.interMedium,
-    fontWeight: "500",
-    letterSpacing: 3,
+  skip1: {
     fontSize: FontSize.size_sm,
+    letterSpacing: 3,
+    fontWeight: "500",
+    fontFamily: FontFamily.interMedium,
   },
   skip: {
-    top: 93,
     left: 341,
-    color: Color.darkslateblue,
-    fontFamily: FontFamily.interMedium,
-    fontWeight: "500",
-    letterSpacing: 3,
-    fontSize: FontSize.size_sm,
-  },
-  vectorIcon: {
-    height: "19.07%",
-    width: "46.58%",
-    top: "24.18%",
-    right: "36.26%",
-    bottom: "56.76%",
-    left: "17.16%",
-  },
-  vectorIcon1: {
-    height: "16.44%",
-    width: "51.29%",
-    top: "27.49%",
-    right: "10.45%",
-    bottom: "56.07%",
-    left: "38.26%",
+    top: 93,
+    position: "absolute",
   },
   illustrationIcon: {
-    top: 179,
     left: 125,
     width: 164,
     height: 164,
+  },
+  mainHeadline: {
+    top: 273,
+    left: 3,
+    fontSize: FontSize.size_25xl,
+    lineHeight: 49,
+    fontFamily: FontFamily.robotoRegular,
+    width: 323,
     position: "absolute",
+  },
+  vectorIcon: {
+    height: "46.05%",
+    width: "55.1%",
+    top: "10.14%",
+    right: "36.89%",
+    bottom: "43.81%",
+    left: "8.01%",
+  },
+  vectorIcon1: {
+    height: "39.71%",
+    width: "60.67%",
+    top: "18.15%",
+    right: "6.37%",
+    bottom: "42.14%",
+    left: "32.97%",
+  },
+  frame: {
+    width: 350,
+    height: 371,
+    left: 43,
+    overflow: "hidden",
   },
   onboarding02: {
     backgroundColor: Color.white,
     flex: 1,
+    width: "100%",
     height: 896,
     overflow: "hidden",
-    width: "100%",
   },
 });
 

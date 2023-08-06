@@ -1,16 +1,24 @@
 import * as React from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View, Pressable } from "react-native";
 import { Image } from "expo-image";
+import { useNavigation } from "@react-navigation/native";
 import { Color, Padding, Border, FontFamily, FontSize } from "../GlobalStyles";
 
 const CreateAccountEmpty = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.createAccountEmpty}>
-      <Text style={styles.mainHeadline}>Register</Text>
-      <View style={styles.staticButton}>
+      <Text style={[styles.mainHeadline, styles.mainHeadlinePosition]}>
+        Register
+      </Text>
+      <Pressable
+        style={styles.staticButton}
+        onPress={() => navigation.navigate("CreateAccountINFO")}
+      >
         <Text style={styles.register}>Register</Text>
-      </View>
-      <View style={[styles.inputField, styles.inputLayout1]}>
+      </Pressable>
+      <View style={[styles.inputField, styles.inputSpaceBlock]}>
         <Text
           style={[styles.fullName, styles.fullNameTypo]}
         >{`Full name `}</Text>
@@ -18,7 +26,7 @@ const CreateAccountEmpty = () => {
       <Text style={[styles.alreadyHaveAn, styles.fullNameTypo]}>
         Already have an account?
       </Text>
-      <View style={[styles.inputField1, styles.inputLayout1]}>
+      <View style={[styles.inputField1, styles.inputSpaceBlock]}>
         <Text style={[styles.fullName, styles.fullNameTypo]}>
           Enter Email Address
         </Text>
@@ -46,23 +54,26 @@ const CreateAccountEmpty = () => {
         <Image
           style={styles.lineCopy2}
           contentFit="cover"
-          source={require("../assets/line-copy-2.png")}
+          source={require("../assets/line-copy-21.png")}
         />
         <Text style={[styles.or, styles.orLayout]}>or</Text>
         <Image
           style={styles.lineCopy2}
           contentFit="cover"
-          source={require("../assets/line-copy-3.png")}
+          source={require("../assets/line-copy-31.png")}
         />
       </View>
-      <View style={styles.loginParent}>
+      <Pressable
+        style={styles.loginParent}
+        onPress={() => navigation.navigate("SignInEmpty")}
+      >
         <Text style={[styles.login, styles.loginTypo]}>LOGIN</Text>
         <Image
           style={styles.groupIcon}
           contentFit="cover"
           source={require("../assets/group.png")}
         />
-      </View>
+      </Pressable>
       <View style={[styles.frame, styles.frameFlexBox]}>
         <View style={[styles.googleBtn, styles.btnLayout]}>
           <Text style={[styles.google1, styles.googleTypo]}>GOOGLE</Text>
@@ -85,9 +96,13 @@ const CreateAccountEmpty = () => {
 };
 
 const styles = StyleSheet.create({
-  inputLayout1: {
-    paddingVertical: 0,
-    height: 54,
+  mainHeadlinePosition: {
+    color: Color.darkslateblue,
+    left: 41,
+    position: "absolute",
+  },
+  inputSpaceBlock: {
+    paddingVertical: Padding.p_0,
     backgroundColor: Color.ghostwhite_100,
     paddingHorizontal: Padding.p_smi,
     justifyContent: "center",
@@ -129,7 +144,7 @@ const styles = StyleSheet.create({
   btnLayout: {
     width: 161,
     borderRadius: Border.br_8xs,
-    paddingVertical: 0,
+    paddingVertical: Padding.p_0,
     backgroundColor: Color.ghostwhite_100,
     justifyContent: "center",
   },
@@ -137,18 +152,14 @@ const styles = StyleSheet.create({
     top: 91,
     fontSize: FontSize.size_25xl,
     lineHeight: 56,
-    fontFamily: FontFamily.gilroyBold,
     textAlign: "left",
-    color: Color.darkslateblue,
-    left: 41,
-    position: "absolute",
+    fontFamily: FontFamily.robotoRegular,
   },
   register: {
     fontSize: FontSize.size_lg,
     lineHeight: 18,
+    fontFamily: FontFamily.damion,
     color: Color.white,
-    fontFamily: FontFamily.sFProDisplay,
-    fontWeight: "700",
     textAlign: "left",
   },
   staticButton: {
@@ -171,15 +182,12 @@ const styles = StyleSheet.create({
   alreadyHaveAn: {
     top: 801,
     color: Color.darkslateblue,
-    fontFamily: FontFamily.interMedium,
-    fontWeight: "500",
-    lineHeight: 17,
-    fontSize: FontSize.size_sm,
     left: 41,
     position: "absolute",
   },
   inputField1: {
     top: 368,
+    height: 54,
   },
   maskGroupIcon: {
     width: 21,
@@ -221,7 +229,7 @@ const styles = StyleSheet.create({
     fontSize: FontSize.size_mini,
     letterSpacing: 0,
     color: Color.slategray_200,
-    fontFamily: FontFamily.sFProDisplay,
+    fontFamily: FontFamily.robotoRegular,
   },
   lineCopy2Parent: {
     top: 262,
@@ -233,6 +241,7 @@ const styles = StyleSheet.create({
     letterSpacing: 3,
     color: Color.slateblue_100,
     fontFamily: FontFamily.interBold,
+    fontWeight: "700",
     textAlign: "left",
   },
   groupIcon: {
@@ -258,7 +267,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   facebookBtn: {
-    paddingHorizontal: 28,
+    paddingHorizontal: Padding.p_9xl,
   },
   frame: {
     top: 188,

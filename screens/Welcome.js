@@ -1,163 +1,114 @@
 import * as React from "react";
-import { StyleSheet, View, Text } from "react-native";
 import { Image } from "expo-image";
+import { StyleSheet, Text, View } from "react-native";
 import { Color, FontSize, FontFamily } from "../GlobalStyles";
 
 const Welcome = () => {
   return (
     <View style={styles.welcome}>
-      <View style={styles.rectangle} />
-      <Text style={[styles.mainHeadline, styles.descriptionPosition]}>
-        Welcome
-      </Text>
-      <Text
-        style={[styles.description, styles.descriptionPosition]}
-      >{`Stay on top by effortlessly tracking your subscriptions & bills`}</Text>
       <Image
-        style={[styles.layerBlurIcon, styles.iconLayout]}
+        style={[styles.frameIcon, styles.frameIconPosition]}
         contentFit="cover"
-        source={require("../assets/layer-blur2.png")}
+        source={require("../assets/frame3.png")}
       />
+      <View style={[styles.frame, styles.frameIconPosition]}>
+        <Text style={[styles.mainHeadline, styles.descriptionPosition]}>
+          Welcome
+        </Text>
+        <Text
+          style={[styles.description, styles.descriptionPosition]}
+        >{`Stay on top by effortlessly tracking your subscriptions & bills`}</Text>
+        <Image
+          style={[styles.vectorIcon, styles.vectorIconLayout]}
+          contentFit="cover"
+          source={require("../assets/vector3.png")}
+        />
+        <Image
+          style={[styles.vectorIcon1, styles.vectorIconLayout]}
+          contentFit="cover"
+          source={require("../assets/vector4.png")}
+        />
+      </View>
       <Image
-        style={[styles.ovalIcon, styles.iconLayout]}
+        style={[styles.frameIcon1, styles.frameIconPosition]}
         contentFit="cover"
-        source={require("../assets/oval3.png")}
-      />
-      <Image
-        style={[styles.groupIcon, styles.iconLayout]}
-        contentFit="cover"
-        source={require("../assets/group6.png")}
-      />
-      <Image
-        style={[styles.vectorIcon, styles.iconLayout]}
-        contentFit="cover"
-        source={require("../assets/vector2.png")}
-      />
-      <Image
-        style={[styles.vectorIcon1, styles.iconLayout]}
-        contentFit="cover"
-        source={require("../assets/vector3.png")}
-      />
-      <Image
-        style={styles.illustrationIcon}
-        contentFit="cover"
-        source={require("../assets/illustration6.png")}
-      />
-      <Image
-        style={[styles.welcomeChild, styles.welcomeLayout]}
-        contentFit="cover"
-        source={require("../assets/ellipse-23.png")}
-      />
-      <Image
-        style={[styles.welcomeItem, styles.welcomeLayout]}
-        contentFit="cover"
-        source={require("../assets/ellipse-23.png")}
+        source={require("../assets/frame4.png")}
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  frameIconPosition: {
+    position: "absolute",
+    overflow: "hidden",
+  },
   descriptionPosition: {
     textAlign: "left",
     color: Color.white,
-    left: 41,
+    left: 11,
     position: "absolute",
   },
-  iconLayout: {
+  vectorIconLayout: {
     maxHeight: "100%",
     maxWidth: "100%",
     position: "absolute",
     overflow: "hidden",
   },
-  welcomeLayout: {
-    height: 12,
-    width: 12,
-    position: "absolute",
-  },
-  rectangle: {
-    top: 0,
-    left: 0,
-    backgroundColor: Color.royalblue_100,
-    width: 414,
-    position: "absolute",
-    height: 896,
+  frameIcon: {
+    top: 195,
+    left: 90,
+    width: 226,
+    height: 220,
   },
   mainHeadline: {
-    top: 541,
+    top: 288,
     fontSize: FontSize.size_25xl,
     lineHeight: 49,
-    fontFamily: FontFamily.gilroyBold,
+    fontFamily: FontFamily.robotoRegular,
   },
   description: {
-    top: 613,
+    top: 360,
     fontSize: FontSize.size_lg,
     letterSpacing: 0,
     lineHeight: 25,
     fontFamily: FontFamily.interRegular,
     width: 328,
   },
-  layerBlurIcon: {
-    height: "16.41%",
-    width: "47.1%",
-    top: "83.59%",
-    right: "24.15%",
-    bottom: "0%",
-    left: "28.74%",
-  },
-  ovalIcon: {
-    height: "10.49%",
-    width: "22.71%",
-    top: "85.04%",
-    right: "38.65%",
-    bottom: "4.46%",
-    left: "38.65%",
-  },
-  groupIcon: {
-    height: "2.56%",
-    width: "6.15%",
-    top: "89.07%",
-    right: "46.93%",
-    bottom: "8.37%",
-    left: "46.93%",
-  },
   vectorIcon: {
-    height: "19.07%",
-    width: "46.58%",
-    top: "32.44%",
-    right: "39.4%",
-    bottom: "48.5%",
-    left: "14.02%",
+    height: "41.67%",
+    width: "55.1%",
+    top: "9.18%",
+    right: "36.89%",
+    bottom: "49.15%",
+    left: "8.01%",
   },
   vectorIcon1: {
-    height: "16.44%",
-    width: "51.29%",
-    top: "35.75%",
-    right: "13.59%",
-    bottom: "47.81%",
-    left: "35.12%",
+    height: "35.93%",
+    width: "60.67%",
+    top: "16.42%",
+    right: "6.37%",
+    bottom: "47.65%",
+    left: "32.96%",
   },
-  illustrationIcon: {
-    top: 195,
-    left: 102,
-    width: 214,
-    height: 214,
-    position: "absolute",
+  frame: {
+    top: 253,
+    left: 30,
+    width: 350,
+    height: 410,
   },
-  welcomeChild: {
-    top: 203,
-    left: 250,
-  },
-  welcomeItem: {
-    top: 403,
-    left: 90,
+  frameIcon1: {
+    top: 762,
+    left: 160,
+    width: 94,
+    height: 117,
   },
   welcome: {
     backgroundColor: Color.slateblue_100,
     flex: 1,
     width: "100%",
-    overflow: "hidden",
     height: 896,
+    overflow: "hidden",
   },
 });
 

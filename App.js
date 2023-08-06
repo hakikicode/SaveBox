@@ -2,6 +2,19 @@ const Stack = createNativeStackNavigator();
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
+import SelectRecipients from "./screens/SelectRecipients";
+import PaymentSuccessful from "./screens/PaymentSuccessful";
+import ForgotPassword from "./screens/ForgotPassword";
+import Verified from "./screens/Verified";
+import VerifyCodeEmpty from "./screens/VerifyCodeEmpty";
+import CreateAccountEnterPhoneN from "./screens/CreateAccountEnterPhoneN";
+import CreateAccountEnterPhoneN1 from "./screens/CreateAccountEnterPhoneN1";
+import CreateAccountINFO from "./screens/CreateAccountINFO";
+import Welcome from "./screens/Welcome";
+import Onboarding03 from "./screens/Onboarding03";
+import Onboarding02 from "./screens/Onboarding02";
+import ForgotPasswordEmpty from "./screens/ForgotPasswordEmpty";
+import EditProfile from "./screens/EditProfile";
 import Onboarding01 from "./screens/Onboarding01";
 import Transactions from "./screens/Transactions";
 import History1 from "./screens/History1";
@@ -24,27 +37,19 @@ import Sale from "./screens/Sale";
 import ErrorStateNoNewActivity from "./screens/ErrorStateNoNewActivity";
 import ErrorStatePaymentFailed from "./screens/ErrorStatePaymentFailed";
 import SideManu from "./screens/SideManu";
-import EditProfile from "./screens/EditProfile";
 import SendMoney from "./screens/SendMoney";
 import MainScreen from "./screens/MainScreen";
-import SelectRecipients from "./screens/SelectRecipients";
 import Recipients from "./screens/Recipients";
-import PaymentSuccessful from "./screens/PaymentSuccessful";
 import InviteFriends from "./screens/InviteFriends";
-import ForgotPassword from "./screens/ForgotPassword";
-import ForgotPasswordEmpty from "./screens/ForgotPasswordEmpty";
 import SignInInfo from "./screens/SignInInfo";
 import SignInEmpty from "./screens/SignInEmpty";
-import Verified from "./screens/Verified";
 import VerifyCode from "./screens/VerifyCode";
-import VerifyCodeEmpty from "./screens/VerifyCodeEmpty";
-import CreateAccountEnterPhoneN from "./screens/CreateAccountEnterPhoneN";
-import CreateAccountEnterPhoneN1 from "./screens/CreateAccountEnterPhoneN1";
-import CreateAccountINFO from "./screens/CreateAccountINFO";
-import Welcome from "./screens/Welcome";
-import Onboarding03 from "./screens/Onboarding03";
-import Onboarding02 from "./screens/Onboarding02";
+import BTNLarge from "./components/BTNLarge";
+import Frame from "./components/Frame";
+import GroupScreen from "./screens/GroupScreen";
+import SavBox from "./screens/SavBox";
 import Splash from "./screens/Splash";
+import Splash1 from "./screens/Splash1";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View, Text, Pressable, TouchableOpacity } from "react-native";
@@ -52,16 +57,19 @@ import { View, Text, Pressable, TouchableOpacity } from "react-native";
 const App = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
   const [fontsLoaded, error] = useFonts({
+    "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
+    "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
+    "Roboto-Black": require("./assets/fonts/Roboto-Black.ttf"),
     "Inter-Regular": require("./assets/fonts/Inter-Regular.ttf"),
     "Inter-Medium": require("./assets/fonts/Inter-Medium.ttf"),
     "Inter-SemiBold": require("./assets/fonts/Inter-SemiBold.ttf"),
     "Inter-Bold": require("./assets/fonts/Inter-Bold.ttf"),
+    Damion: require("./assets/fonts/Damion.ttf"),
+    "Poppins-Regular": require("./assets/fonts/Poppins-Regular.ttf"),
+    "Poppins-SemiBold": require("./assets/fonts/Poppins-SemiBold.ttf"),
     "NotoSerif-Regular": require("./assets/fonts/NotoSerif-Regular.ttf"),
     "NotoSerif-SemiBold": require("./assets/fonts/NotoSerif-SemiBold.ttf"),
     "Nunito-SemiBold": require("./assets/fonts/Nunito-SemiBold.ttf"),
-    "Poppins-Regular": require("./assets/fonts/Poppins-Regular.ttf"),
-    "Poppins-SemiBold": require("./assets/fonts/Poppins-SemiBold.ttf"),
-    "Roboto-Black": require("./assets/fonts/Roboto-Black.ttf"),
   });
 
   if (!fontsLoaded && !error) {
@@ -73,6 +81,71 @@ const App = () => {
       <NavigationContainer>
         {hideSplashScreen ? (
           <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen
+              name="SelectRecipients"
+              component={SelectRecipients}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="PaymentSuccessful"
+              component={PaymentSuccessful}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="ForgotPassword"
+              component={ForgotPassword}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Verified"
+              component={Verified}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="VerifyCodeEmpty"
+              component={VerifyCodeEmpty}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="CreateAccountEnterPhoneNumberEmptyState"
+              component={CreateAccountEnterPhoneN}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="CreateAccountEnterPhoneNumber"
+              component={CreateAccountEnterPhoneN1}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="CreateAccountINFO"
+              component={CreateAccountINFO}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Welcome"
+              component={Welcome}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Onboarding03"
+              component={Onboarding03}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Onboarding02"
+              component={Onboarding02}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="ForgotPasswordEmpty"
+              component={ForgotPasswordEmpty}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="EditProfile"
+              component={EditProfile}
+              options={{ headerShown: false }}
+            />
             <Stack.Screen
               name="Onboarding01"
               component={Onboarding01}
@@ -184,11 +257,6 @@ const App = () => {
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="EditProfile"
-              component={EditProfile}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
               name="SendMoney"
               component={SendMoney}
               options={{ headerShown: false }}
@@ -199,33 +267,13 @@ const App = () => {
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="SelectRecipients"
-              component={SelectRecipients}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
               name="Recipients"
               component={Recipients}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="PaymentSuccessful"
-              component={PaymentSuccessful}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
               name="InviteFriends"
               component={InviteFriends}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="ForgotPassword"
-              component={ForgotPassword}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="ForgotPasswordEmpty"
-              component={ForgotPasswordEmpty}
               options={{ headerShown: false }}
             />
             <Stack.Screen
@@ -239,53 +287,38 @@ const App = () => {
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Verified"
-              component={Verified}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
               name="VerifyCode"
               component={VerifyCode}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="VerifyCodeEmpty"
-              component={VerifyCodeEmpty}
+              name="BTNLarge"
+              component={BTNLarge}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="CreateAccountEnterPhoneNumberEmptyState"
-              component={CreateAccountEnterPhoneN}
+              name="Frame"
+              component={Frame}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="CreateAccountEnterPhoneNumber"
-              component={CreateAccountEnterPhoneN1}
+              name="Group68"
+              component={GroupScreen}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="CreateAccountINFO"
-              component={CreateAccountINFO}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Welcome"
-              component={Welcome}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Onboarding03"
-              component={Onboarding03}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Onboarding02"
-              component={Onboarding02}
+              name="SavBox"
+              component={SavBox}
               options={{ headerShown: false }}
             />
             <Stack.Screen
               name="Splash"
               component={Splash}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Splash1"
+              component={Splash1}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

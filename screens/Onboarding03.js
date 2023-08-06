@@ -1,78 +1,62 @@
 import * as React from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, Pressable, View } from "react-native";
 import { Image } from "expo-image";
-import { Color, FontFamily, FontSize } from "../GlobalStyles";
+import { useNavigation } from "@react-navigation/native";
+import ContainerFrame from "../components/ContainerFrame";
+import { Color, FontSize, FontFamily } from "../GlobalStyles";
 
 const Onboarding03 = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.onboarding03}>
-      <Text style={[styles.mainHeadline, styles.descriptionFlexBox]}>
-        Reach your goals with ease
-      </Text>
-      <Text style={[styles.description, styles.descriptionFlexBox]}>
+      <Text style={[styles.description, styles.skip1FlexBox]}>
         Use the smart saving features to manage your future goals and needs
       </Text>
-      <View style={styles.roundBtn}>
+      <Pressable
+        style={styles.skip}
+        onPress={() => navigation.navigate("Welcome")}
+      >
+        <Text style={[styles.skip1, styles.skip1FlexBox]}>SKIP</Text>
+      </Pressable>
+      <View style={styles.frame}>
+        <Text style={[styles.mainHeadline, styles.skip1FlexBox]}>
+          Reach your goals with ease
+        </Text>
         <Image
-          style={[styles.layerBlurIcon, styles.iconLayout]}
+          style={[styles.vectorIcon, styles.vectorIconLayout]}
           contentFit="cover"
-          source={require("../assets/layer-blur.png")}
+          source={require("../assets/vector12.png")}
         />
         <Image
-          style={[styles.ovalIcon, styles.iconLayout]}
+          style={[styles.vectorIcon1, styles.vectorIconLayout]}
           contentFit="cover"
-          source={require("../assets/oval.png")}
+          source={require("../assets/vector13.png")}
         />
-        <Text style={[styles.next, styles.nextTypo]}>NEXT</Text>
+        <Image
+          style={styles.illustrationIcon}
+          contentFit="cover"
+          source={require("../assets/illustration7.png")}
+        />
       </View>
-      <Text style={[styles.text, styles.nextTypo]}>3/3</Text>
-      <Text style={[styles.skip, styles.nextTypo]}>SKIP</Text>
-      <Image
-        style={[styles.vectorIcon, styles.iconLayout]}
-        contentFit="cover"
-        source={require("../assets/vector12.png")}
-      />
-      <Image
-        style={[styles.vectorIcon1, styles.iconLayout]}
-        contentFit="cover"
-        source={require("../assets/vector13.png")}
-      />
-      <Image
-        style={styles.illustrationIcon}
-        contentFit="cover"
-        source={require("../assets/illustration7.png")}
+      <ContainerFrame
+        fractionText="3/3"
+        onFramePress={() => navigation.navigate("Welcome")}
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  descriptionFlexBox: {
+  skip1FlexBox: {
     textAlign: "center",
     color: Color.darkslateblue,
-    position: "absolute",
   },
-  iconLayout: {
+  vectorIconLayout: {
     maxHeight: "100%",
     maxWidth: "100%",
     position: "absolute",
     overflow: "hidden",
-  },
-  nextTypo: {
-    fontFamily: FontFamily.interMedium,
-    fontWeight: "500",
-    letterSpacing: 3,
-    fontSize: FontSize.size_sm,
-    textAlign: "center",
-    position: "absolute",
-  },
-  mainHeadline: {
-    top: 452,
-    left: 46,
-    fontSize: FontSize.size_25xl,
-    lineHeight: 49,
-    fontFamily: FontFamily.gilroyBold,
-    width: 323,
   },
   description: {
     top: 602,
@@ -82,85 +66,65 @@ const styles = StyleSheet.create({
     lineHeight: 25,
     fontFamily: FontFamily.interRegular,
     width: 303,
-  },
-  layerBlurIcon: {
-    height: "137.17%",
-    width: "176.6%",
-    top: "-18.58%",
-    right: "-35.11%",
-    bottom: "-18.58%",
-    left: "-41.49%",
-  },
-  ovalIcon: {
-    height: "83.19%",
-    top: "0%",
-    right: "0%",
-    bottom: "16.81%",
-    left: "0%",
-    width: "100%",
-    maxWidth: "100%",
-  },
-  next: {
-    top: 39,
-    left: 25,
-    color: Color.white,
-  },
-  roundBtn: {
-    height: "12.61%",
-    width: "22.71%",
-    top: "85.04%",
-    right: "7.97%",
-    bottom: "2.34%",
-    left: "69.32%",
     position: "absolute",
   },
-  text: {
-    top: 801,
-    left: 34,
-    color: Color.darkslateblue,
-    fontFamily: FontFamily.interMedium,
-    fontWeight: "500",
-    letterSpacing: 3,
+  skip1: {
     fontSize: FontSize.size_sm,
+    letterSpacing: 3,
+    fontWeight: "500",
+    fontFamily: FontFamily.interMedium,
   },
   skip: {
-    top: 93,
     left: 342,
-    color: Color.darkslateblue,
-    fontFamily: FontFamily.interMedium,
-    fontWeight: "500",
-    letterSpacing: 3,
-    fontSize: FontSize.size_sm,
+    top: 93,
+    position: "absolute",
+  },
+  mainHeadline: {
+    top: 278,
+    left: 0,
+    fontSize: FontSize.size_25xl,
+    lineHeight: 49,
+    fontFamily: FontFamily.robotoRegular,
+    width: 323,
+    position: "absolute",
   },
   vectorIcon: {
-    height: "15.12%",
-    width: "42.19%",
-    top: "26.71%",
-    right: "40.4%",
-    bottom: "58.17%",
-    left: "17.41%",
+    height: "36.04%",
+    width: "52.18%",
+    top: "17.37%",
+    right: "40.03%",
+    bottom: "46.59%",
+    left: "7.79%",
   },
   vectorIcon1: {
-    height: "17.74%",
-    width: "44.9%",
-    top: "27.42%",
-    right: "12.4%",
-    bottom: "54.84%",
-    left: "42.7%",
+    height: "42.28%",
+    width: "55.54%",
+    top: "19.05%",
+    right: "5.39%",
+    bottom: "38.67%",
+    left: "39.07%",
   },
   illustrationIcon: {
-    top: 174,
-    left: 122,
+    top: 0,
+    left: 76,
     width: 150,
     height: 150,
     position: "absolute",
   },
+  frame: {
+    top: 174,
+    left: 46,
+    width: 335,
+    height: 376,
+    position: "absolute",
+    overflow: "hidden",
+  },
   onboarding03: {
     backgroundColor: Color.white,
     flex: 1,
+    width: "100%",
     height: 896,
     overflow: "hidden",
-    width: "100%",
   },
 });
 

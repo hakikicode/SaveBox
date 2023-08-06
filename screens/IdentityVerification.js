@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Text, StyleSheet, View } from "react-native";
 import { Image } from "expo-image";
+import Frame10 from "../components/Frame10";
 import { FontFamily, FontSize, Color, Border, Padding } from "../GlobalStyles";
 
 const IdentityVerification = () => {
@@ -43,30 +44,15 @@ Verification`}</Text>
         />
       </View>
       <View style={[styles.frame3, styles.frameFlexBox]}>
-        <View style={styles.frame4}>
-          <View style={[styles.frame5, styles.frameLayout]}>
-            <View style={styles.frameInner} />
-            <Text style={styles.send1}>{`Your 
-Passport`}</Text>
-          </View>
-          <Image
-            style={styles.ggsoftwareUploadIcon}
-            contentFit="cover"
-            source={require("../assets/ggsoftwareupload.png")}
-          />
-        </View>
-        <View style={styles.frame4}>
-          <View style={styles.frameLayout}>
-            <View style={styles.frameInner} />
-            <Text style={styles.send1}>{`Driving 
-Licence`}</Text>
-          </View>
-          <Image
-            style={styles.ggsoftwareUploadIcon}
-            contentFit="cover"
-            source={require("../assets/ggsoftwareupload.png")}
-          />
-        </View>
+        <Frame10
+          identificationDocumentTit={`Your 
+Passport`}
+        />
+        <Frame10
+          identificationDocumentTit={`Driving 
+Licence`}
+          propJustifyContent="flex-start"
+        />
       </View>
     </View>
   );
@@ -99,19 +85,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     overflow: "hidden",
   },
-  frameLayout: {
-    height: 188,
-    alignSelf: "stretch",
-    overflow: "hidden",
-  },
   mainHeadline: {
     marginTop: -326,
     fontSize: FontSize.size_27xl,
-    fontFamily: FontFamily.gilroyBold,
+    fontFamily: FontFamily.robotoRegular,
     color: Color.gray_200,
-    textAlign: "left",
-    left: "10.87%",
-    top: "50%",
   },
   bodyText: {
     marginTop: -183,
@@ -124,7 +102,6 @@ const styles = StyleSheet.create({
     left: "10.87%",
     top: "50%",
     position: "absolute",
-    fontFamily: FontFamily.interSemiBold,
   },
   signUp: {
     fontSize: FontSize.size_lg,
@@ -139,7 +116,7 @@ const styles = StyleSheet.create({
     borderRadius: Border.br_5xs,
     backgroundColor: Color.royalblue_100,
     paddingHorizontal: 65,
-    paddingVertical: 0,
+    paddingVertical: Padding.p_0,
   },
   frameChild: {
     backgroundColor: Color.slateblue_400,
@@ -208,41 +185,6 @@ const styles = StyleSheet.create({
     left: 43,
     width: 104,
     height: 19,
-  },
-  frameInner: {
-    backgroundColor: Color.lavender_100,
-    width: 99,
-    height: 105,
-    borderRadius: Border.br_3xs,
-  },
-  send1: {
-    fontSize: FontSize.size_5xl,
-    fontFamily: FontFamily.notoSerifSemiBold,
-    marginTop: 17,
-    fontWeight: "600",
-    letterSpacing: 0,
-    textAlign: "left",
-    color: Color.gray_200,
-  },
-  frame5: {
-    justifyContent: "flex-end",
-  },
-  ggsoftwareUploadIcon: {
-    width: 37,
-    height: 37,
-    marginTop: -156,
-    overflow: "hidden",
-  },
-  frame4: {
-    backgroundColor: Color.ghostwhite_100,
-    width: 149,
-    paddingLeft: Padding.p_6xl,
-    paddingTop: Padding.p_smi,
-    paddingRight: Padding.p_5xl,
-    paddingBottom: Padding.p_smi,
-    borderRadius: Border.br_3xs,
-    alignItems: "center",
-    overflow: "hidden",
   },
   frame3: {
     top: 366,

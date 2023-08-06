@@ -1,33 +1,29 @@
 import * as React from "react";
 import { Text, StyleSheet, View } from "react-native";
 import { Image } from "expo-image";
-import { Color, FontSize, FontFamily, Border, Padding } from "../GlobalStyles";
+import BTNMedium1 from "../components/BTNMedium1";
+import { Color, FontSize, FontFamily } from "../GlobalStyles";
 
 const ErrorStateLocationAccess = () => {
   return (
     <View style={styles.errorStateLocationAccess}>
       <Text
-        style={[styles.description, styles.descriptionClr]}
+        style={[styles.description, styles.descriptionFlexBox]}
       >{`Hmm. Looks like your location access is turned off. `}</Text>
-      <View style={styles.btnMedium}>
-        <View style={styles.signUpWrapper}>
-          <Text style={[styles.signUp, styles.signUpTypo]}>Back</Text>
-        </View>
-        <View style={styles.btnMediumChild} />
-      </View>
+      <BTNMedium1 />
       <View style={styles.frame}>
-        <Text style={[styles.mainHeadline, styles.descriptionClr]}>
+        <Text style={[styles.mainHeadline, styles.descriptionFlexBox]}>
           Location Access
         </Text>
         <Image
           style={[styles.vectorIcon, styles.vectorIconLayout]}
           contentFit="cover"
-          source={require("../assets/vector.png")}
+          source={require("../assets/vector7.png")}
         />
         <Image
           style={[styles.vectorIcon1, styles.vectorIconLayout]}
           contentFit="cover"
-          source={require("../assets/vector1.png")}
+          source={require("../assets/vector11.png")}
         />
         <Image
           style={styles.illustrationIcon}
@@ -40,14 +36,10 @@ const ErrorStateLocationAccess = () => {
 };
 
 const styles = StyleSheet.create({
-  descriptionClr: {
-    color: Color.white,
+  descriptionFlexBox: {
     textAlign: "center",
+    color: Color.white,
     position: "absolute",
-  },
-  signUpTypo: {
-    letterSpacing: 0,
-    fontSize: FontSize.size_lg,
   },
   vectorIconLayout: {
     maxHeight: "100%",
@@ -58,49 +50,18 @@ const styles = StyleSheet.create({
   description: {
     top: 497,
     left: 44,
+    fontSize: FontSize.size_lg,
+    letterSpacing: 0,
     lineHeight: 25,
     fontFamily: FontFamily.interRegular,
     width: 327,
-    textAlign: "center",
-    letterSpacing: 0,
-    fontSize: FontSize.size_lg,
-  },
-  signUp: {
-    fontWeight: "700",
-    fontFamily: FontFamily.interBold,
-    color: Color.darkslateblue,
-    alignSelf: "stretch",
-    textAlign: "center",
-  },
-  signUpWrapper: {
-    borderRadius: Border.br_5xs,
-    paddingHorizontal: Padding.p_51xl,
-    paddingVertical: 0,
-    alignItems: "flex-end",
-    justifyContent: "center",
-    alignSelf: "stretch",
-    backgroundColor: Color.white,
-  },
-  btnMediumChild: {
-    backgroundColor: Color.gray_300,
-    width: 139,
-    height: 32,
-    marginTop: -15,
-  },
-  btnMedium: {
-    top: 614,
-    left: 115,
-    width: 185,
-    alignItems: "center",
-    position: "absolute",
   },
   mainHeadline: {
     top: 258,
     left: 13,
     fontSize: FontSize.size_23xl,
     lineHeight: 54,
-    fontFamily: FontFamily.gilroyBold,
-    textAlign: "center",
+    fontFamily: FontFamily.robotoRegular,
   },
   vectorIcon: {
     height: "41.86%",
@@ -134,11 +95,11 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   errorStateLocationAccess: {
+    backgroundColor: Color.white,
     flex: 1,
     width: "100%",
     height: 896,
     overflow: "hidden",
-    backgroundColor: Color.white,
   },
 });
 

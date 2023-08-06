@@ -1,12 +1,15 @@
 import * as React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Pressable } from "react-native";
 import { Image } from "expo-image";
-import { Color, FontSize, FontFamily, Border } from "../GlobalStyles";
+import { useNavigation } from "@react-navigation/native";
+import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
 const SignInEmpty = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.signInEmpty}>
-      <View style={styles.rectangle} />
+      <View style={[styles.rectangle, styles.registerPosition]} />
       <Text style={styles.mainHeadline}>Log In</Text>
       <Text style={[styles.logIn, styles.logTypo]}>Log In</Text>
       <Text style={[styles.dontHaveAn, styles.googleTypo]}>
@@ -35,49 +38,61 @@ const SignInEmpty = () => {
         <View style={[styles.rectangle1, styles.rectangle1Bg]} />
         <Text style={[styles.facebook, styles.googlePosition]}>FACEBOOK</Text>
       </View>
-      <View style={styles.orParent}>
+      <View style={[styles.orParent, styles.orPosition]}>
         <Text style={[styles.or, styles.orPosition]}>or</Text>
         <Image
           style={[styles.lineCopy2, styles.lineLayout]}
           contentFit="cover"
-          source={require("../assets/line-copy-2.png")}
+          source={require("../assets/line-copy-21.png")}
         />
         <Image
           style={[styles.lineCopy3, styles.lineLayout]}
           contentFit="cover"
-          source={require("../assets/line-copy-31.png")}
+          source={require("../assets/line-copy-32.png")}
         />
       </View>
-      <Text style={[styles.forgotPasswordCopy, styles.orPosition]}>
-        Forgot Password?
-      </Text>
-      <View style={[styles.staticButton, styles.staticLayout]}>
+      <Pressable
+        style={styles.forgotPasswordCopyContainer}
+        onPress={() => navigation.navigate("ForgotPasswordEmpty")}
+      >
+        <Text style={styles.forgotPassword}>Forgot Password?</Text>
+      </Pressable>
+      <Pressable
+        style={[styles.staticButton, styles.staticLayout]}
+        onPress={() => navigation.navigate("SignInInfo")}
+      >
         <Image
           style={[styles.staticButtonChild, styles.staticLayout]}
           contentFit="cover"
           source={require("../assets/rectangle-16.png")}
         />
         <Text style={[styles.logIn1, styles.logTypo]}>Log In</Text>
-      </View>
-      <View style={styles.registerParent}>
+      </Pressable>
+      <Pressable
+        style={styles.registerParent}
+        onPress={() => navigation.navigate("CreateAccountEmpty")}
+      >
         <Text style={[styles.register, styles.googlePosition]}>REGISTER</Text>
         <Image
           style={styles.groupIcon}
           contentFit="cover"
           source={require("../assets/group4.png")}
         />
-      </View>
+      </Pressable>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  registerPosition: {
+    left: 0,
+    top: 0,
+  },
   logTypo: {
     color: Color.white,
+    fontFamily: FontFamily.damion,
     lineHeight: 18,
     fontSize: FontSize.size_lg,
-    fontFamily: FontFamily.sFProDisplay,
-    fontWeight: "700",
     textAlign: "left",
     position: "absolute",
   },
@@ -120,7 +135,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   orPosition: {
-    letterSpacing: 0,
+    top: "50%",
     position: "absolute",
   },
   lineLayout: {
@@ -140,17 +155,16 @@ const styles = StyleSheet.create({
   rectangle: {
     width: 414,
     height: 897,
-    left: 0,
-    top: 0,
     position: "absolute",
     backgroundColor: Color.white,
+    top: 0,
   },
   mainHeadline: {
     top: 91,
     fontSize: FontSize.size_25xl,
-    fontFamily: FontFamily.gilroyBold,
     textAlign: "left",
     color: Color.darkslateblue,
+    fontFamily: FontFamily.robotoRegular,
     left: 41,
     position: "absolute",
   },
@@ -246,10 +260,10 @@ const styles = StyleSheet.create({
     fontSize: FontSize.size_mini,
     lineHeight: 15,
     color: Color.slategray_200,
-    top: "50%",
-    fontFamily: FontFamily.sFProDisplay,
     letterSpacing: 0,
     textAlign: "left",
+    fontFamily: FontFamily.robotoRegular,
+    top: "50%",
   },
   lineCopy2: {
     top: "56.64%",
@@ -269,17 +283,19 @@ const styles = StyleSheet.create({
     right: "30.22%",
     left: "28.5%",
     height: 15,
-    top: "50%",
-    position: "absolute",
   },
-  forgotPasswordCopy: {
-    top: 431,
-    left: 267,
+  forgotPassword: {
     fontSize: FontSize.size_smi,
     textDecoration: "underline",
     fontFamily: FontFamily.interRegular,
     color: Color.royalblue_100,
+    letterSpacing: 0,
     textAlign: "center",
+  },
+  forgotPasswordCopyContainer: {
+    left: 267,
+    top: 431,
+    position: "absolute",
   },
   staticButtonChild: {
     borderRadius: Border.br_5xs,
@@ -296,10 +312,9 @@ const styles = StyleSheet.create({
   },
   register: {
     fontSize: FontSize.size_base,
+    fontWeight: "700",
     fontFamily: FontFamily.interBold,
     color: Color.slateblue_100,
-    letterSpacing: 3,
-    fontWeight: "700",
     textAlign: "left",
     left: 0,
     top: 0,
@@ -327,8 +342,8 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 896,
     overflow: "hidden",
-    backgroundColor: Color.white,
     width: "100%",
+    backgroundColor: Color.white,
   },
 });
 

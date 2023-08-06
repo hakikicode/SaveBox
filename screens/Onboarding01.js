@@ -1,7 +1,8 @@
 import * as React from "react";
-import { Text, StyleSheet, View, Pressable } from "react-native";
+import { Text, StyleSheet, Pressable, View } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
+import RoundBTN from "../components/RoundBTN";
 import { FontSize, FontFamily, Color } from "../GlobalStyles";
 
 const Onboarding01 = () => {
@@ -11,29 +12,25 @@ const Onboarding01 = () => {
     <View style={styles.onboarding01}>
       <Text style={styles.mainHeadline}>Take hold of your finances</Text>
       <Text style={styles.description}>
-        Running your finances is easier with xyz
+        Running your finances is easier with SavBox
       </Text>
-      <Text style={styles.skip}>SKIP</Text>
+      <Pressable
+        style={styles.skip}
+        onPress={() => navigation.navigate("Welcome")}
+      >
+        <Text style={styles.skip1}>SKIP</Text>
+      </Pressable>
       <Image
         style={styles.frameIcon}
         contentFit="cover"
-        source={require("../assets/frame.png")}
+        source={require("../assets/frame6.png")}
       />
-      <Pressable style={styles.frame} onPress={() => navigation.goBack()}>
+      <Pressable
+        style={styles.frame}
+        onPress={() => navigation.navigate("Onboarding02")}
+      >
         <Text style={styles.text}>1/3</Text>
-        <View style={styles.roundBtn}>
-          <Image
-            style={styles.layerBlurIcon}
-            contentFit="cover"
-            source={require("../assets/layer-blur.png")}
-          />
-          <Image
-            style={styles.ovalIcon}
-            contentFit="cover"
-            source={require("../assets/oval.png")}
-          />
-          <Text style={styles.next}>NEXT</Text>
-        </View>
+        <RoundBTN />
       </Pressable>
     </View>
   );
@@ -46,7 +43,7 @@ const styles = StyleSheet.create({
     left: 49,
     fontSize: FontSize.size_25xl,
     lineHeight: 56,
-    fontFamily: FontFamily.gilroyBold,
+    fontFamily: FontFamily.robotoRegular,
     color: Color.darkslateblue,
     textAlign: "center",
     width: 316,
@@ -54,7 +51,7 @@ const styles = StyleSheet.create({
   description: {
     position: "absolute",
     top: 602,
-    left: 46,
+    left: 30,
     fontSize: FontSize.size_lg,
     letterSpacing: 0,
     lineHeight: 25,
@@ -62,16 +59,18 @@ const styles = StyleSheet.create({
     color: Color.darkslateblue,
     textAlign: "center",
   },
-  skip: {
-    position: "absolute",
-    top: 93,
-    left: 341,
+  skip1: {
     fontSize: FontSize.size_sm,
     letterSpacing: 3,
     fontWeight: "500",
     fontFamily: FontFamily.interMedium,
     color: Color.darkslateblue,
     textAlign: "center",
+  },
+  skip: {
+    position: "absolute",
+    left: 341,
+    top: 93,
   },
   frameIcon: {
     position: "absolute",
@@ -91,50 +90,10 @@ const styles = StyleSheet.create({
     width: 56,
     marginTop: 39,
   },
-  layerBlurIcon: {
-    position: "absolute",
-    height: "100%",
-    width: "141.49%",
-    top: "0%",
-    right: "0%",
-    bottom: "0%",
-    left: "-41.49%",
-    maxWidth: "100%",
-    overflow: "hidden",
-    maxHeight: "100%",
-  },
-  ovalIcon: {
-    position: "absolute",
-    height: "83.19%",
-    width: "100%",
-    top: "0%",
-    right: "0%",
-    bottom: "16.81%",
-    left: "0%",
-    maxWidth: "100%",
-    overflow: "hidden",
-    maxHeight: "100%",
-  },
-  next: {
-    position: "absolute",
-    top: "34.51%",
-    left: "26.6%",
-    fontSize: FontSize.size_sm,
-    letterSpacing: 3,
-    fontWeight: "500",
-    fontFamily: FontFamily.interMedium,
-    color: Color.white,
-    textAlign: "center",
-  },
-  roundBtn: {
-    position: "relative",
-    width: 94,
-    height: 113,
-  },
   frame: {
     position: "absolute",
-    top: 762,
-    left: 34,
+    top: 758,
+    left: 39,
     width: 346,
     overflow: "hidden",
     flexDirection: "row",

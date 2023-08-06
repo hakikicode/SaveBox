@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     marginTop: -168,
     left: "22.46%",
     fontSize: 60,
-    fontFamily: FontFamily.gilroyBold,
+    fontFamily: FontFamily.robotoRegular,
     color: Color.darkslateblue,
   },
   backArrowBlackCopy: {

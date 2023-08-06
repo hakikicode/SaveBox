@@ -1,47 +1,53 @@
 import * as React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Pressable, Text } from "react-native";
 import { Image } from "expo-image";
+import { useNavigation } from "@react-navigation/native";
 import { FontFamily, FontSize, Color, Border } from "../GlobalStyles";
 
 const SignInInfo = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.signInInfo}>
-      <View style={styles.rectangle} />
+      <Pressable
+        style={styles.rectangle}
+        onPress={() => navigation.navigate("ForgotPasswordEmpty")}
+      />
       <Text style={styles.mainHeadline}>Log In</Text>
       <Text style={[styles.dontHaveAn, styles.googleTypo]}>
         Don’t have an account?
       </Text>
-      <View style={[styles.googleBtn, styles.btnPosition]}>
-        <View style={styles.rectangle1} />
+      <View style={[styles.googleBtn, styles.btnLayout]}>
         <Text style={[styles.google, styles.googleTypo]}>GOOGLE</Text>
       </View>
-      <View style={[styles.facebookBtn, styles.btnPosition]}>
-        <View style={styles.rectangle1} />
+      <View style={[styles.facebookBtn, styles.btnLayout]}>
         <Text style={[styles.facebook, styles.googleTypo]}>FACEBOOK</Text>
       </View>
       <View style={styles.orParent}>
-        <Text style={[styles.or, styles.orPosition]}>or</Text>
+        <Text style={styles.or}>or</Text>
         <Image
           style={[styles.lineCopy2, styles.lineLayout]}
           contentFit="cover"
-          source={require("../assets/line-copy-2.png")}
+          source={require("../assets/line-copy-21.png")}
         />
         <Image
           style={[styles.lineCopy3, styles.lineLayout]}
           contentFit="cover"
-          source={require("../assets/line-copy-31.png")}
+          source={require("../assets/line-copy-32.png")}
         />
       </View>
-      <Text style={[styles.forgotPasswordCopy, styles.orPosition]}>
-        Forgot Password?
-      </Text>
+      <Pressable
+        style={styles.forgotPasswordCopyContainer}
+        onPress={() => navigation.navigate("ForgotPasswordEmpty")}
+      >
+        <Text style={styles.forgotPassword}>Forgot Password?</Text>
+      </Pressable>
       <Image
-        style={[styles.inputFieldIcon, styles.inputLayout]}
+        style={[styles.inputFieldIcon, styles.inputPosition]}
         contentFit="cover"
-        source={require("../assets/input-field.png")}
+        source={require("../assets/input-field1.png")}
       />
-      <View style={[styles.inputFieldActive, styles.inputLayout]}>
-        <View style={[styles.inputFieldActiveChild, styles.registerPosition]} />
+      <View style={[styles.inputFieldActive, styles.inputPosition]}>
         <Text style={[styles.mickeymooremailcom, styles.registerTypo]}>
           mickey.moore@mail.com
         </Text>
@@ -66,15 +72,13 @@ const styles = StyleSheet.create({
     color: Color.darkslateblue,
     position: "absolute",
   },
-  btnPosition: {
+  btnLayout: {
+    backgroundColor: Color.ghostwhite_100,
+    borderRadius: Border.br_8xs,
     bottom: "73.1%",
     top: "20.98%",
     width: "38.89%",
     height: "5.92%",
-    position: "absolute",
-  },
-  orPosition: {
-    letterSpacing: 0,
     position: "absolute",
   },
   lineLayout: {
@@ -86,15 +90,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     overflow: "hidden",
   },
-  inputLayout: {
-    height: 56,
-    width: 332,
+  inputPosition: {
     left: 41,
     position: "absolute",
-  },
-  registerPosition: {
-    top: 0,
-    left: 0,
   },
   registerTypo: {
     color: Color.slateblue_100,
@@ -113,9 +111,9 @@ const styles = StyleSheet.create({
   mainHeadline: {
     top: 91,
     fontSize: FontSize.size_25xl,
-    fontFamily: FontFamily.gilroyBold,
     textAlign: "left",
     color: Color.darkslateblue,
+    fontFamily: FontFamily.robotoRegular,
     left: 41,
     position: "absolute",
   },
@@ -124,17 +122,6 @@ const styles = StyleSheet.create({
     lineHeight: 17,
     left: 34,
     textAlign: "left",
-  },
-  rectangle1: {
-    height: "100%",
-    top: "0%",
-    right: "0%",
-    bottom: "0%",
-    left: "0%",
-    borderRadius: Border.br_8xs,
-    backgroundColor: Color.ghostwhite_100,
-    position: "absolute",
-    width: "100%",
   },
   google: {
     left: 45,
@@ -158,13 +145,15 @@ const styles = StyleSheet.create({
   },
   or: {
     marginTop: -7.5,
+    top: "50%",
     left: "45.64%",
     fontSize: FontSize.size_mini,
     lineHeight: 15,
-    fontFamily: FontFamily.sFProDisplay,
     color: Color.slategray_200,
-    top: "50%",
+    letterSpacing: 0,
     textAlign: "left",
+    fontFamily: FontFamily.robotoRegular,
+    position: "absolute",
   },
   lineCopy2: {
     top: "56.64%",
@@ -179,35 +168,29 @@ const styles = StyleSheet.create({
     left: "63.54%",
   },
   orParent: {
-    marginTop: -186,
-    width: "41.28%",
-    right: "30.22%",
-    left: "28.5%",
+    top: 262,
+    left: 118,
+    width: 171,
     height: 15,
-    top: "50%",
     position: "absolute",
   },
-  forgotPasswordCopy: {
-    top: 431,
-    left: 267,
+  forgotPassword: {
     fontSize: FontSize.size_smi,
     textDecoration: "underline",
     fontFamily: FontFamily.interRegular,
     color: Color.royalblue_100,
+    letterSpacing: 0,
     textAlign: "center",
+  },
+  forgotPasswordCopyContainer: {
+    left: 267,
+    top: 431,
+    position: "absolute",
   },
   inputFieldIcon: {
     top: 368,
-  },
-  inputFieldActiveChild: {
-    borderRadius: Border.br_5xs,
-    backgroundColor: Color.slateblue_300,
-    borderStyle: "solid",
-    borderColor: "#5771f9",
-    borderWidth: 1,
-    width: 333,
-    height: 57,
-    position: "absolute",
+    width: 332,
+    height: 56,
   },
   mickeymooremailcom: {
     left: 18,
@@ -217,13 +200,20 @@ const styles = StyleSheet.create({
   },
   inputFieldActive: {
     top: 302,
+    borderRadius: Border.br_5xs,
+    backgroundColor: Color.slateblue_300,
+    borderStyle: "solid",
+    borderColor: "#5771f9",
+    borderWidth: 1,
+    width: 333,
+    height: 57,
   },
   register: {
+    top: 0,
     fontWeight: "700",
     fontFamily: FontFamily.interBold,
-    top: 0,
-    left: 0,
     letterSpacing: 3,
+    left: 0,
   },
   groupIcon: {
     height: "53.94%",
@@ -246,10 +236,10 @@ const styles = StyleSheet.create({
   },
   signInInfo: {
     flex: 1,
+    width: "100%",
     height: 896,
     overflow: "hidden",
     backgroundColor: Color.white,
-    width: "100%",
   },
 });
 

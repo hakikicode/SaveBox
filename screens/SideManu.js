@@ -614,7 +614,7 @@ const styles = StyleSheet.create({
     marginTop: -264,
     left: "11.11%",
     fontSize: FontSize.size_7xl,
-    fontFamily: FontFamily.gilroyBold,
+    fontFamily: FontFamily.robotoRegular,
     textAlign: "center",
     color: Color.gray_200,
   },

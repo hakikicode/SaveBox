@@ -1,30 +1,28 @@
 import * as React from "react";
 import { Text, StyleSheet, View } from "react-native";
 import { Image } from "expo-image";
-import { FontSize, FontFamily, Color, Border, Padding } from "../GlobalStyles";
+import BTNMedium2 from "../components/BTNMedium2";
+import { Color, FontSize, FontFamily } from "../GlobalStyles";
 
 const ErrorStateNoNewActivity = () => {
   return (
     <View style={styles.errorStateNoNewActivity}>
-      <Text style={styles.mainHeadline}>No New Activity</Text>
-      <Text style={[styles.description, styles.signUpTypo]}>
+      <Text style={[styles.mainHeadline, styles.descriptionFlexBox]}>
+        No New Activity
+      </Text>
+      <Text style={[styles.description, styles.descriptionFlexBox]}>
         It seems everything went well and your app is ready to work with you
       </Text>
-      <View style={styles.btnMedium}>
-        <View style={styles.signUpWrapper}>
-          <Text style={[styles.signUp, styles.signUpTypo]}>Back</Text>
-        </View>
-        <View style={styles.btnMediumChild} />
-      </View>
+      <BTNMedium2 />
       <Image
         style={[styles.vectorIcon, styles.vectorIconLayout]}
         contentFit="cover"
-        source={require("../assets/vector2.png")}
+        source={require("../assets/vector3.png")}
       />
       <Image
         style={[styles.vectorIcon1, styles.vectorIconLayout]}
         contentFit="cover"
-        source={require("../assets/vector3.png")}
+        source={require("../assets/vector4.png")}
       />
       <Image
         style={styles.illustrationIcon}
@@ -36,10 +34,10 @@ const ErrorStateNoNewActivity = () => {
 };
 
 const styles = StyleSheet.create({
-  signUpTypo: {
-    letterSpacing: 0,
-    fontSize: FontSize.size_lg,
+  descriptionFlexBox: {
     textAlign: "center",
+    color: Color.white,
+    position: "absolute",
   },
   vectorIconLayout: {
     maxHeight: "100%",
@@ -52,48 +50,16 @@ const styles = StyleSheet.create({
     left: 54,
     fontSize: FontSize.size_23xl,
     lineHeight: 54,
-    fontFamily: FontFamily.gilroyBold,
-    textAlign: "center",
-    color: Color.white,
-    position: "absolute",
+    fontFamily: FontFamily.robotoRegular,
   },
   description: {
     top: 497,
     left: 44,
+    fontSize: FontSize.size_lg,
+    letterSpacing: 0,
     lineHeight: 25,
     fontFamily: FontFamily.interRegular,
     width: 327,
-    color: Color.white,
-    fontSize: FontSize.size_lg,
-    position: "absolute",
-  },
-  signUp: {
-    fontWeight: "700",
-    fontFamily: FontFamily.interBold,
-    color: Color.darkslateblue,
-    alignSelf: "stretch",
-  },
-  signUpWrapper: {
-    borderRadius: Border.br_5xs,
-    paddingHorizontal: Padding.p_51xl,
-    paddingVertical: 0,
-    alignItems: "flex-end",
-    justifyContent: "center",
-    alignSelf: "stretch",
-    backgroundColor: Color.white,
-  },
-  btnMediumChild: {
-    backgroundColor: Color.gray_300,
-    width: 139,
-    height: 32,
-    marginTop: -15,
-  },
-  btnMedium: {
-    top: 614,
-    left: 115,
-    width: 185,
-    alignItems: "center",
-    position: "absolute",
   },
   vectorIcon: {
     height: "19.07%",
@@ -119,11 +85,11 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   errorStateNoNewActivity: {
+    backgroundColor: Color.white,
     flex: 1,
     width: "100%",
     height: 896,
     overflow: "hidden",
-    backgroundColor: Color.white,
   },
 });
 

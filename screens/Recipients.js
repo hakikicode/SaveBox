@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Text, StyleSheet, View } from "react-native";
 import { Image } from "expo-image";
-import { Color, FontFamily, Border, FontSize } from "../GlobalStyles";
+import GroupComponent1 from "../components/GroupComponent1";
+import { FontFamily, Border, Color, FontSize } from "../GlobalStyles";
 
 const Recipients = () => {
   return (
@@ -16,13 +17,11 @@ const Recipients = () => {
       <View style={styles.rectangle} />
       <View style={styles.recipientsItem} />
       <Image
-        style={[styles.arrowIcon, styles.iconLayout]}
+        style={styles.arrowIcon}
         contentFit="cover"
         source={require("../assets/arrow-icon.png")}
       />
-      <Text style={[styles.send, styles.addTypo]}>
-        My personal accounts (4)
-      </Text>
+      <Text style={styles.send}>My personal accounts (4)</Text>
       <Text style={[styles.send1, styles.sendTypo2]}>RECENT RECEIPTS</Text>
       <Image
         style={[styles.recipientsInner, styles.recipientsChildLayout]}
@@ -81,19 +80,7 @@ const Recipients = () => {
           source={require("../assets/image-15.png")}
         />
       </View>
-      <View style={styles.layerBlurParent}>
-        <Image
-          style={[styles.layerBlurIcon, styles.iconLayout]}
-          contentFit="cover"
-          source={require("../assets/layer-blur.png")}
-        />
-        <Image
-          style={[styles.ovalIcon, styles.iconLayout]}
-          contentFit="cover"
-          source={require("../assets/oval.png")}
-        />
-        <Text style={[styles.add, styles.addTypo]}>ADD</Text>
-      </View>
+      <GroupComponent1 />
       <Image
         style={styles.settingsBtnIcon}
         contentFit="cover"
@@ -104,18 +91,6 @@ const Recipients = () => {
 };
 
 const styles = StyleSheet.create({
-  iconLayout: {
-    maxHeight: "100%",
-    maxWidth: "100%",
-    position: "absolute",
-    overflow: "hidden",
-  },
-  addTypo: {
-    color: Color.white,
-    fontFamily: FontFamily.interMedium,
-    fontWeight: "500",
-    position: "absolute",
-  },
   sendTypo2: {
     fontFamily: FontFamily.interSemiBold,
     fontWeight: "600",
@@ -204,7 +179,7 @@ const styles = StyleSheet.create({
     marginTop: -337,
     left: "10.14%",
     fontSize: FontSize.size_23xl,
-    fontFamily: FontFamily.gilroyBold,
+    fontFamily: FontFamily.robotoRegular,
     textAlign: "center",
     color: Color.darkslateblue,
     top: "50%",
@@ -254,20 +229,28 @@ const styles = StyleSheet.create({
     right: "17.65%",
     bottom: "74.09%",
     left: "79.48%",
+    maxWidth: "100%",
+    maxHeight: "100%",
+    position: "absolute",
+    overflow: "hidden",
   },
   send: {
     marginTop: -232,
     left: "14.49%",
+    fontWeight: "500",
+    fontFamily: FontFamily.interMedium,
+    color: Color.white,
     textAlign: "left",
     letterSpacing: 0,
-    fontFamily: FontFamily.interMedium,
-    fontWeight: "500",
     fontSize: FontSize.size_lg,
     top: "50%",
+    position: "absolute",
   },
   send1: {
     marginTop: -155,
     fontSize: FontSize.size_sm,
+    fontFamily: FontFamily.interSemiBold,
+    fontWeight: "600",
     textAlign: "left",
     left: "9.9%",
     color: Color.darkslateblue,
@@ -426,36 +409,6 @@ const styles = StyleSheet.create({
     height: 47,
     width: 47,
   },
-  layerBlurIcon: {
-    height: "135.4%",
-    width: "185.11%",
-    top: "-18.58%",
-    right: "-43.62%",
-    bottom: "-16.81%",
-    left: "-41.49%",
-  },
-  ovalIcon: {
-    height: "83.19%",
-    top: "0%",
-    right: "0%",
-    bottom: "16.81%",
-    left: "0%",
-    width: "100%",
-  },
-  add: {
-    top: "34.51%",
-    left: "30.85%",
-    letterSpacing: 3,
-    fontSize: FontSize.size_sm,
-    textAlign: "center",
-  },
-  layerBlurParent: {
-    top: 764,
-    left: 279,
-    width: 94,
-    height: 113,
-    position: "absolute",
-  },
   settingsBtnIcon: {
     top: 23,
     left: 261,
@@ -465,9 +418,9 @@ const styles = StyleSheet.create({
   },
   recipients: {
     flex: 1,
+    width: "100%",
     height: 896,
     overflow: "hidden",
-    width: "100%",
     backgroundColor: Color.white,
   },
 });
